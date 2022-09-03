@@ -3,9 +3,7 @@
 
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Ссылка на сайт фронта: _____________
+Ссылка на сайт фронта: https://avcherepanov.students.nomorepartiesxyz.ru
 
-Ссылка на бэкенд: _____________
+Ссылка на бэкенд: https://api.avcherepanov.students.nomoredomains.sbs
 
-IP: ___
-login: _____
