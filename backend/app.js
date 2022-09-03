@@ -7,6 +7,7 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { login, createUser } = require('./controllers/user');
 const auth = require('./middlewares/auth');
+const cors = require('./middlewares/cors');
 const validateURL = require('./utils/validateURL/validateURL');
 const NotFound = require('./utils/errors/not-found');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
