@@ -61,11 +61,11 @@ app.use((err, req, res, next) => {
   res
     .status(statusCode)
     .send({
+      // проверяем статус и выставляем сообщение в зависимости от него
       message: statusCode === 500
         ? 'На сервере произошла ошибка'
         : message,
     });
-  next();
 });
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
@@ -73,13 +73,9 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 })
 
-app.listen(PORT, () => {
-
-});
-
-//  .then(() => {
-//    app.listen(PORT, () => {
-//      console.log(`App started on ${PORT} port`);
-//    });
-//  })
-//  .catch((e) => console.log(e));
+.then(() => {
+  app.listen(PORT, () => {
+    console.log(`App started on ${PORT} port`);
+  });
+})
+.catch((e) => console.log(e));
