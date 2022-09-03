@@ -1,0 +1,13 @@
+.popup__button-text {
+  color: white;
+  font-size: 18px;
+  line-height: 22px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__button-text {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

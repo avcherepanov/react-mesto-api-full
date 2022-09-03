@@ -49,8 +49,6 @@ app.post('/signup', celebrate({
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
 
-app.use(errorLogger);
-
 app.use(auth, (req, res, next) => next(new NotFound('Страница не найдена')));
 
 app.use(errors());
@@ -61,21 +59,15 @@ app.use((err, req, res, next) => {
   res
     .status(statusCode)
     .send({
-      // проверяем статус и выставляем сообщение в зависимости от него
       message: statusCode === 500
         ? 'На сервере произошла ошибка'
         : message,
     });
+  next();
 });
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
-.then(() => {
-  app.listen(PORT, () => {
-    console.log(`App started on ${PORT} port`);
-  });
-})
-.catch((e) => console.log(e));
+app.listen(PORT, () => {
+
+});

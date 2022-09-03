@@ -1,0 +1,16 @@
+.card__heart {
+  background-image: url(../../../image/HeartOff.svg);
+  min-width: 22px;
+  height: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 30px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+}
+
+.card__heart:hover {
+  opacity: 0.6;
+}

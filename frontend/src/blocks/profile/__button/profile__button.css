@@ -1,0 +1,24 @@
+.profile__button {
+  background-image: url(../../../image/BorderButtonAddDesc.svg);
+  background-size: cover;
+  width: 150px;
+  height: 50px;
+  justify-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button {
+    width: 282px;
+    background-size: cover;
+    background-image: url(../../../image/BorderButtonAdd.svg);
+  }
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
