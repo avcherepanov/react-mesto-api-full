@@ -53,7 +53,7 @@ function App() {
       })
       .catch((err) => console.err(`Ошибка ${err}`))
     }
-  }, [loggedIn])
+  }, [loggedIn, tokenCheck])
 
   React.useEffect(() => {
     tokenCheck()
@@ -64,7 +64,7 @@ function App() {
           })
           .catch((err) => console.err(`Ошибка ${err}`))
     }
-  }, [loggedIn])
+  }, [loggedIn, tokenCheck])
    
   function handleUpdateUser(data) {
     api.editProfile(data.name, data.about)
