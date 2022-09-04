@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import api from "../utils/Api";
 import { CurrentUserContext } from '../context/CurrentUserContext'
 import { CardsContext } from '../context/CardsContext'
