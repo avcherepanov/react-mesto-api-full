@@ -31,7 +31,7 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked)
     .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        setCards((state) => state.map((c) => c._id === card._id ? newCard.data : c));
     })
     .catch((err) => console.err(`Ошибка ${err}`))
 }
@@ -47,20 +47,29 @@ function App() {
   useEffect(() => {
     tokenCheck()
     if (loggedIn) {
-      Promise.all([api.getProfile(), api.getInitialCards()])
-      .then(([user, cardData]) => {
-        setCurrentUser(user);
-        setCards(cardData);
+      api.getInitialCards()
+      .then((cardData) => {
+        setCards(cardData.data);
       })
       .catch((err) => console.err(`Ошибка ${err}`))
     }
   }, [loggedIn])
 
-
+  useEffect(() => {
+    tokenCheck()
+    if (loggedIn) {
+     api.getProfile()
+          .then((user) => {
+            setCurrentUser(user.data);
+          })
+          .catch((err) => console.err(`Ошибка ${err}`))
+    }
+  }, [loggedIn])
+   
   function handleUpdateUser(data) {
     api.editProfile(data.name, data.about)
     .then((userData) => {
-      setCurrentUser(userData)
+      setCurrentUser(userData.data)
       closeAllPopups()
     })
     .catch((err) => console.err(`Ошибка ${err}`))
@@ -69,7 +78,7 @@ function App() {
   function handleUpdateAvatar(data) {
     api.resetAvatar(data.avatar)
     .then((userData) => {
-      setCurrentUser(userData)
+      setCurrentUser(userData.data)
       closeAllPopups()
     })
     .catch((err) => console.err(`Ошибка ${err}`))
@@ -78,7 +87,7 @@ function App() {
   function handleAddPlace(title) {
     api.addCard(title.title, title.link)
     .then((newCard) => {
-      setCards([newCard, ...cards]);
+      setCards([newCard.data, ...cards]);
       closeAllPopups()
     })
     .catch((err) => console.err(`Ошибка ${err}`))

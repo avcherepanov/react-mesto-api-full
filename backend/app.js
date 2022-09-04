@@ -51,6 +51,7 @@ app.use('/cards', auth, cardRouter);
 
 app.use(auth, (req, res, next) => next(new NotFound('Страница не найдена')));
 
+app.use(errorLogger);
 app.use(errors());
 
 app.use((err, req, res, next) => {

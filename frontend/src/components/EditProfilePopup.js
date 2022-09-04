@@ -10,6 +10,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Я не понял логики этого кода до конца, типо у в параметрах функции сразу будет значение? Супер-мега непонятно :crying:
     onUpdateUser({
       name: name,
       about: description,
