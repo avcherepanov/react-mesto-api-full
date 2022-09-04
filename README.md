@@ -7,3 +7,5 @@
 
 Ссылка на бэкенд: https://api.avcherepanov.students.nomoredomains.sbs
 
+Вход на сервер: ssh avcherepanov@130.193.52.8
+
