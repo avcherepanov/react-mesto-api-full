@@ -1,9 +1,9 @@
 const allowedCors = [
-  'avcherepanov.students.nomoredomains.xyz',
+  'avcherepanov.students.nomorepartiesxyz.ru',
   'localhost:3000',
   'http://localhost:3000',
-  'http://avcherepanov.students.nomoredomains.xyz',
-  'https://avcherepanov.students.nomoredomains.xyz',
+  'http://avcherepanov.students.nomorepartiesxyz.ru',
+  'https://avcherepanov.students.nomorepartiesxyz.ru',
   'https://localhost:3000',
 ];
 

@@ -1,75 +1,46 @@
-import PopupWithForm from "./PopupWithForm";
-import React, { useEffect } from "react";
-import { CurrentUserContext } from "../context/CurrentUserContext";
+import PopupWithForm from './PopupWithForm';
+import React, {useEffect, useState, useContext} from 'react';
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const userContext = React.useContext(CurrentUserContext);
+function EditProfilePopup(props) {
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleChangeName(evt) {
+    setName(evt.target.value);
+  }
 
-    // Я не понял логики этого кода до конца, типо у в параметрах функции сразу будет значение? Супер-мега непонятно :crying:
-    onUpdateUser({
-      name: name,
+  function handleChangeDescription(evt) {
+    setDescription(evt.target.value);
+  }
+
+  function handleSubmit(evt) {
+    evt.preventDefault(); 
+    props.onUpdateUser({
+      name,
       about: description,
     });
   }
+
   useEffect(() => {
-    setName(userContext.name);
-    setDescription(userContext.about);
-  }, [userContext, isOpen]);
-
-  function handleChangeName(e) {
-    setName(e.target.value);
-  }
-
-  function handleChangeDescription(e) {
-    setDescription(e.target.value);
-  }
+    setName(currentUser.name);
+    setDescription(currentUser.about);
+  }, [currentUser, props.isOpen]);
 
   return (
-    <PopupWithForm
-      name="-edit"
-      title="Редактировать профиль"
-      isOpen={isOpen}
-      onClose={onClose}
-      button="Сохранить"
-      onSubmit={handleSubmit}
-      children={
-        <>
-          <input
-            autoFocus
-            className="popup__input-name"
-            name="username"
-            placeholder="Введите имя"
-            type="text"
-            minLength="2"
-            maxLength="40"
-            required
-            id="name-input"
-            onChange={handleChangeName}
-            value={name || ""}
-          />
-          <span className="popup__input-error name-input-error"></span>
-          <input
-            className="popup__input-name popup__input-name_type_user-job"
-            placeholder="Введите вашу профессию"
-            name="about"
-            type="text"
-            minLength="2"
-            maxLength="200"
-            required
-            id="job-input"
-            onChange={handleChangeDescription}
-            value={description || ""}
-          />
-          <span className="popup__input-error job-input-error"></span>
-        </>
-      }
-    />
-  );
+    <PopupWithForm name="edit" title="Редактировать профиль" buttonText="Сохранить"
+                   isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
+      <input className="popup__input popup__input_name-user" type="text" id="nameUser-input" required
+             size="14" minLength="2" maxLength="40" placeholder="Ваше имя" name="nameUser" value={name || ''}
+             onChange={handleChangeName}/>
+      <span className="popup__input-error nameUser-input-error"/>
+      <input className="popup__input popup__input_work-user" type="text" id="workUser-input" required
+             size="14" minLength="2" maxLength="200" placeholder="О себе" name="workUser" value={description || ''}
+             onChange={handleChangeDescription}/>
+      <span className="popup__input-error workUser-input-error"/>
+    </PopupWithForm>
+  )
 }
 
 export default EditProfilePopup;
