@@ -44,7 +44,7 @@ function App() {
     .catch((err) => console.err(`Ошибка ${err}`))
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     tokenCheck()
     if (loggedIn) {
       api.getInitialCards()
@@ -55,7 +55,7 @@ function App() {
     }
   }, [loggedIn])
 
-  useEffect(() => {
+  React.useEffect(() => {
     tokenCheck()
     if (loggedIn) {
      api.getProfile()
