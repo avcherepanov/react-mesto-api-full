@@ -1,5 +1,4 @@
 {
-  "homepage": ".",
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
@@ -18,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* avcherepanov@62.84.123.101:/home/avcherepanov/react-mesto-api-full/frontend"
+    "deploy": "npm run build && scp -r ./build/* avcherepanov@62.84.123.101:/home/avcherepanov/react-mesto-api-full/frontend/build"
   },
   "eslintConfig": {
     "extends": [
