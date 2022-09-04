@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.avcherepanov.students.nomoredomains.sbs';
+export const BASE_URL = 'http://api.avcherepanov.students.nomoredomains.sbs';
 
 const checkResponse = (res) => {
   if (res.ok) {
