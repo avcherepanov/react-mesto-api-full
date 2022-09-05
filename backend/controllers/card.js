@@ -42,7 +42,7 @@ module.exports.deleteCard = (req, res, next) => {
             });
 //          .catch(next);
         }
-      }
+      }cd
     })
     .catch((err) => {
       if (err.name === 'CastError') {
