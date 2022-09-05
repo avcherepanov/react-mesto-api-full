@@ -40,10 +40,10 @@ module.exports.deleteCard = (req, res, next) => {
             .then(() => {
               res.send({ message: 'Карточка удалена' });
             });
-            .catch((err) => {
-              if (err.name === 'CastError') next(new BadReqError('Переданы некорректные данные при удалении карточки'));
-              next(err);
-            });
+            // .catch((err) => {
+            //   if (err.name === 'CastError') next(new BadReqError('Переданы некорректные данные при удалении карточки'));
+            //   next(err);
+            // });
         }
       }
     })
